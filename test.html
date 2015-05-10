@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+
+<!--WellesleyBites
+	Sheridan McKisick, Pamela Wang, Giovi Mier
+	CS 220: P4
+	
+	The first computer-based implementation of our project.
+  -->
+
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<link rel="stylesheet" href="custom.css">
+<link rel="stylesheet" type="text/css" href="landscape.css" media="screen and (orientation:landscape)">
+<link rel="stylesheet" href="themes/byteme.min.css" />
+<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
+<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<title>WellesleyBites</title>
+</head>
+<body>
+
+<!-- HOME PAGE -->
+<div data-role="page" id="home" data-theme="a">
+  <div data-role="header" data-position="fixed">
+    <h1>WellesleyBites</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+    
+    <!--<ul data-role="listview" data-inset="true" id="currentMeal">
+    	<li>LUNCH</li>
+    </ul>-->
+	<h2 id="currentMeal">LUNCH</h2>
+    <p>11:30 AM - 2:00 PM</p>
+    <p><hr></p>
+    <a href="#feedmepopup" data-rel="popup" data-position-to="window" data-transition="fade"
+	class="ui-corner-all ui-shadow ui-btn-inline">
+	<img src="images/feedme.gif" alt="Feed Me" height="200px" /></a>
+  </div>
+
+  <div data-role="popup" id="feedmepopup" class="ui-corner-all">
+	<div data-role="header" class="ui-corner-top">
+	  <h1>Feed Me</h1>
+	</div>
+	<div data-role="main" class="ui-corner-bottom ui-content">
+	<p>Based on your preferences, you should eat at Bates.</p>
+	<p><a href="#settings">Why?</a></p>
+		<a href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c">No</a>    
+		<a href="#" data-role="button" data-inline="true" data-rel="back" data-transition="flow" data-theme="b">Yes</a>
+	</div>
+  </div>
+
+  <div data-role="footer" data-position="fixed">
+    <div data-role="navbar">
+      <ul>
+        <li> <a href="#home" data-icon="home"></a>
+        <li> <a href="#menu" data-icon="bars"></a>
+        <li> <a href="#search" data-icon="search"></a>
+        <li> <a href="#friends" data-icon="user"></a>
+        <li> <a href="#settings" data-icon="gear"></a>
+      </ul>
+    </div>
+  </div>
+</div> 
+<!-- END HOME PAGE -->
+
+<!-- MENUS PAGE -->
+<div data-role="page" id="menu" data-theme="a">
+  <div data-role="header" data-position="fixed">
+    <h1>Menus</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+
+  <p><a href="#compareall" data-role="button">Compare All</a></p>
+    
+  	<div class="ui-grid-a">
+      <div class="ui-block-a">
+		<li><a href="#lulu">
+		  <img src="images/bae_pao.jpg" width="145"></a>
+		</li>
+
+		<li><a href="#pomeroy">
+		  <img src="images/pomeroy.jpg" width="145"></a>
+		</li>
+
+		<li><a href="#tower">
+		  <img src="images/tower.jpg" width="145"></a>
+		</li>
+		</div>
+
+      <div class="ui-block-b">
+        <li><a href="#bates">
+      		<img src="images/bates.jpg" width="145"></a>
+        </li>
+
+         <li><a href="#stone-d">
+     		<img src="images/stone.jpg" width="145"></a>
+        </li>
+
+        <li><a href="#emporium">
+     		<img src="images/campus_center_emporium.jpg" width="145"></a>
+        </li>
+	  </div>
+	  
+    </div>
+  </div>
+
+  <div data-role="footer" data-position="fixed">
+    <div data-role="navbar">
+      <ul>
+        <li> <a href="#home" data-icon="home"></a>
+        <li> <a href="#menu" data-icon="bars"></a>
+        <li> <a href="#search" data-icon="search"></a>
+        <li> <a href="#friends" data-icon="user"></a>
+        <li> <a href="#settings" data-icon="gear"></a>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END MENUS PAGE -->
+
+<!-- COMPARE ALL PAGE -->
+<div data-role="page" id="compareall" data-theme="a">
+  <div data-role="header" data-position="fixed">
+    <a data-icon="back" data-rel="back" back-btn="true">Back</a>
+    <h1>Compare All</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+
+<div data-role="tabs" id="tabs">
+  <div data-role="navbar">
+    <ul>
+      <li><a href="#breakfast" data-ajax="false">breakfast</a></li>
+      <li><a href="#lunch" data-ajax="false">lunch</a></li>
+      <li><a href="#dinner" data-ajax="false">dinner</a></li>
+    </ul>
+  </div>
+
+  <div id="breakfast" class="ui-body-d ui-content">
+    <h4>Breakfast</h4>
+  </div>
+  <div id="lunch">
+    <div class="landscape-menu" id="lulu-lunch">
+	<h5>BaePaoLuChow</h5>
+	<ul>
+       <li>Oranges</li>
+	<li>Apples</li>
+	<li>Bananas</li>
+	</ul>
+    </div>
+    <div class="landscape-menu" id="bates-lunch">
+    	<h5>&nbsp;&nbsp;Bates</h5>
+	<ul>
+       <li>Tofu</li>
+	<li>Soy Bacon</li>
+	<li>Fried Tofu</li>
+	</ul>
+    </div>
+    <div class="landscape-menu" id="pom-lunch">
+	<h5>Pomeroy</h5>
+	<ul>
+       <li>"Meat" Loaf</li>
+	<li>"Meat"  Balls</li>
+	<li>"Meat" Pie</li>
+	</ul>
+    </div>
+    <div class="landscape-menu" id="stoned-lunch">
+	<h5>Stone Davis</h5>
+	<ul>
+       <li>Kelp</li>
+	<li>Algae</li>
+	<li>Seaweed</li>
+	</ul>
+    </div>
+    <div class="landscape-menu" id="tower-lunch">
+	<h5>Tower</h5>
+	<ul>
+	<li>French Fries</li>
+	<li>Mashed Potatoes</li>
+	<li>Tater Tots</li>
+	</ul>
+    </div>
+  </div>
+  <div id="dinner" class="ui-body-d ui-content">
+    <h1>Dinner</h1>
+  </div>
+</div>
+
+  <div data-role="footer" data-position="fixed">
+    <div data-role="navbar">
+      <ul>
+        <li> <a href="#home" data-icon="home"></a>
+        <li> <a href="#menu" data-icon="bars"></a>
+        <li> <a href="#search" data-icon="search"></a>
+        <li> <a href="#friends" data-icon="user"></a>
+        <li> <a href="#settings" data-icon="gear"></a>
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
+
+<script>
+$(document).on("pagecreate", "#compareall", function(){
+    
+    $( "#tabs" ).tabs("option", "active", 1);
+
+});
+</script>
+
+<!-- END COMPARE ALL PAGE -->
+
+<!-- LULU PAGE -->
+<div data-role="page" id="lulu" data-theme="a">
+  <div data-role="header" data-position="fixed">
+    <a data-icon="back" data-rel="back" back-btn="true">Back</a>
+    <h1>Bae Pao Lu Chow</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+
+<div data-role="tabs" id="tabs2">
+  <div data-role="navbar">
+    <ul>
+      <li><a href="#breakfast" data-ajax="false">breakfast</a></li>
+      <li><a href="#lunch" data-ajax="false">lunch</a></li>
+      <li><a href="#dinner" data-ajax="false">dinner</a></li>
+    </ul>
+  </div>
+
+  <div id="breakfast" class="ui-body-d ui-content">
+    <h4>Breakfast</h4>
+  </div>
+  <div id="lunch" class="ui-body-d ui-content">
+	<ul>
+       <li>Oranges</li>
+	<li>Apples</li>
+	<li>Bananas</li>
+	</ul>
+  </div>
+  <div id="dinner" class="ui-body-d ui-content">
+    <h4>Dinner</h4>
+  </div>
+</div>
+</div>
+
+  <div data-role="footer" data-position="fixed">
+    <div data-role="navbar">
+      <ul>
+        <li> <a href="#home" data-icon="home"></a>
+        <li> <a href="#menu" data-icon="bars"></a>
+        <li> <a href="#search" data-icon="search"></a>
+        <li> <a href="#friends" data-icon="user"></a>
+        <li> <a href="#settings" data-icon="gear"></a>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<script>
+$(document).on("pagecreate", "#lulu", function(){
+    
+    $( "#tabs2" ).tabs("option", "active", 1);
+
+});
+</script>
+
+
+<!-- END LULU PAGE -->
+
+<!-- BATES PAGE -->
+<div data-role="page" id="bates" data-theme="a">
+  <div data-role="header" data-position="fixed">
+    <a data-icon="back" data-rel="back" back-btn="true">Back</a>
+    <h1>Bates</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+
+<div data-role="tabs" id="tabs3">
+  <div data-role="navbar">
+    <ul>
+      <li><a href="#breakfast" data-ajax="false">breakfast</a></li>
+      <li><a href="#lunch" data-ajax="false">lunch</a></li>
+      <li><a href="#dinner" data-ajax="false">dinner</a></li>
+    </ul>
+  </div>
+
+  <div id="breakfast" class="ui-body-d ui-content">
+    <h4>Breakfast</h4>
+  </div>
+  <div id="lunch" class="ui-body-d ui-content">
+	<ul>
+       <li>Tofu</li>
+	<li>Soy Bacon</li>
+	<li>Fried Tofu</li>
+	</ul>
+  </div>
+  <div id="dinner" class="ui-body-d ui-content">
+    <h4>Dinner</h4>
+  </div>
+</div>
+</div>
+
+  <div data-role="footer" data-position="fixed">
+    <div data-role="navbar">
+      <ul>
+        <li> <a href="#home" data-icon="home"></a>
+        <li> <a href="#menu" data-icon="bars"></a>
+        <li> <a href="#search" data-icon="search"></a>
+        <li> <a href="#friends" data-icon="user"></a>
+        <li> <a href="#settings" data-icon="gear"></a>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<script>
+$(document).on("pagecreate", "#bates", function(){
+    
+    $( "#tabs3" ).tabs("option", "active", 1);
+
+});
+</script>
+
+
+<!-- END BATES PAGE -->
+
+<!-- POMEROY PAGE -->
+<div data-role="page" id="pomeroy" data-theme="a">
+  <div data-role="header" data-position="fixed">
+    <a data-icon="back" data-rel="back" back-btn="true">Back</a>
+    <h1>Pomeroy</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+
+<div data-role="tabs" id="tabs4">
+  <div data-role="navbar">
+    <ul>
+      <li><a href="#breakfast" data-ajax="false">breakfast</a></li>
+      <li><a href="#lunch" data-ajax="false">lunch</a></li>
+      <li><a href="#dinner" data-ajax="false">dinner</a></li>
+    </ul>
+  </div>
+
+  <div id="breakfast" class="ui-body-d ui-content">
+    <h4>Breakfast</h4>
+  </div>
+  <div id="lunch" class="ui-body-d ui-content">
+	<ul>
+       <li>"Meat" Loaf</li>
+	<li>"Meat"  Balls</li>
+	<li>"Meat" Pie</li>
+	</ul>
+  </div>
+  <div id="dinner" class="ui-body-d ui-content">
+    <h4>Dinner</h4>
+  </div>
+</div>
+</div>
+
+  <div data-role="footer" data-position="fixed">
+    <div data-role="navbar">
+      <ul>
+        <li> <a href="#home" data-icon="home"></a>
+        <li> <a href="#menu" data-icon="bars"></a>
+        <li> <a href="#search" data-icon="search"></a>
+        <li> <a href="#friends" data-icon="user"></a>
+        <li> <a href="#settings" data-icon="gear"></a>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<script>
+$(document).on("pagecreate", "#pomeroy", function(){
+    
+    $( "#tabs4" ).tabs("option", "active", 1);
+
+});
+</script>
+
+
+<!-- END POMEROY PAGE -->
+
+<!-- STOnE-D PAGE -->
+<div data-role="page" id="stone-d" data-theme="a">
+  <div data-role="header" data-position="fixed">
+    <a data-icon="back" data-rel="back" back-btn="true">Back</a>
+    <h1>Stone-D</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+
+<div data-role="tabs" id="tabs5">
+  <div data-role="navbar">
+    <ul>
+      <li><a href="#breakfast" data-ajax="false">breakfast</a></li>
+      <li><a href="#lunch" data-ajax="false">lunch</a></li>
+      <li><a href="#dinner" data-ajax="false">dinner</a></li>
+    </ul>
+  </div>
+
+  <div id="breakfast" class="ui-body-d ui-content">
+    <h4>Breakfast</h4>
+  </div>
+  <div id="lunch" class="ui-body-d ui-content">
+	<ul>
+       <li>Kelp</li>
+	<li>Algae</li>
+	<li>Seaweed</li>
+	</ul>
+  </div>
+  <div id="dinner" class="ui-body-d ui-content">
+    <h4>Dinner</h4>
+  </div>
+</div>
+</div>
+
+  <div data-role="footer" data-position="fixed">
+    <div data-role="navbar">
+      <ul>
+        <li> <a href="#home" data-icon="home"></a>
+        <li> <a href="#menu" data-icon="bars"></a>
+        <li> <a href="#search" data-icon="search"></a>
+        <li> <a href="#friends" data-icon="user"></a>
+        <li> <a href="#settings" data-icon="gear"></a>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<script>
+$(document).on("pagecreate", "#stone-d", function(){
+    
+    $( "#tabs5" ).tabs("option", "active", 1);
+
+});
+</script>
+
+
+<!-- END STOnE-D PAGE -->
+
+<!-- TOWER PAGE -->
+<div data-role="page" id="tower" data-theme="a">
+  <div data-role="header" data-position="fixed">
+    <a data-icon="back" data-rel="back" back-btn="true">Back</a>
+    <h1>Tower</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+
+<div data-role="tabs" id="tabs6">
+  <div data-role="navbar">
+    <ul>
+      <li><a href="#breakfast" data-ajax="false">breakfast</a></li>
+      <li><a href="#lunch" data-ajax="false">lunch</a></li>
+      <li><a href="#dinner" data-ajax="false">dinner</a></li>
+    </ul>
+  </div>
+
+  <div id="breakfast" class="ui-body-d ui-content">
+    <h4>Breakfast</h4>
+  </div>
+  <div id="lunch" class="ui-body-d ui-content">
+	<ul>
+	<li>French Fries</li>
+	<li>Mashed Potatoes</li>
+	<li>Tater Tots</li>
+	</ul>
+  </div>
+  <div id="dinner" class="ui-body-d ui-content">
+    <h4>Dinner</h4>
+  </div>
+</div>
+</div>
+
+  <div data-role="footer" data-position="fixed">
+    <div data-role="navbar">
+      <ul>
+        <li> <a href="#home" data-icon="home"></a>
+        <li> <a href="#menu" data-icon="bars"></a>
+        <li> <a href="#search" data-icon="search"></a>
+        <li> <a href="#friends" data-icon="user"></a>
+        <li> <a href="#settings" data-icon="gear"></a>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<script>
+$(document).on("pagecreate", "#tower", function(){
+    
+    $( "#tabs6" ).tabs("option", "active", 1);
+
+});
+</script>
+
+
+<!-- END TOWER PAGE -->
+
+<!-- EMPORIUM PAGE -->
+<div data-role="page" id="emporium" data-theme="a">
+  <div data-role="header" data-position="fixed">
+    <a data-icon="back" data-rel="back" back-btn="true">Back</a>
+    <h1>Emporium</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+
+<div data-role="tabs" id="tabs7">
+  <div data-role="navbar">
+    <ul>
+      <li><a href="#breakfast" data-ajax="false">breakfast</a></li>
+      <li><a href="#lunch" data-ajax="false">lunch</a></li>
+      <li><a href="#dinner" data-ajax="false">dinner</a></li>
+    </ul>
+  </div>
+
+  <div id="breakfast" class="ui-body-d ui-content">
+    <h4>Breakfast</h4>
+  </div>
+  <div id="lunch" class="ui-body-d ui-content">
+	<ul>
+	<li>Wrap</li>
+	<li>Salad</li>
+	<li>Cucumber Sushi</li>
+	</ul>
+  </div>
+  <div id="dinner" class="ui-body-d ui-content">
+    <h4>Dinner</h4>
+  </div>
+</div>
+</div>
+
+  <div data-role="footer" data-position="fixed">
+    <div data-role="navbar">
+      <ul>
+        <li> <a href="#home" data-icon="home"></a>
+        <li> <a href="#menu" data-icon="bars"></a>
+        <li> <a href="#search" data-icon="search"></a>
+        <li> <a href="#friends" data-icon="user"></a>
+        <li> <a href="#settings" data-icon="gear"></a>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<script>
+$(document).on("pagecreate", "#emporium", function(){
+    
+    $( "#tabs7" ).tabs("option", "active", 1);
+
+});
+</script>
+
+
+<!-- END EMPORIUM PAGE -->
+
+<!-- SEARCH PAGE -->
+<div data-role="page" data-theme="a" id="search">
+  <div data-role="header" data-position="fixed">
+    <h1>Search</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+
+<label for="food-search">Search Available Food</label>
+<input type="search" name="food-search" id="food-search" value=" " />
+
+<ul data-role="listview" data-inset="true">
+       <li><a href="#">Peanut Free</a></li>
+	<li><a href="#">Gluten Free</a></li>
+	<li><a href="#compareall">Vegetarian</a></li>
+	<li><a href="#">Vegan</a></li>
+	<li><a href="#">Create Your Own</a></li>
+    </ul>
+
+  </div>
+
+  <div data-role="footer" data-position="fixed">
+    <div data-role="navbar">
+      <ul>
+        <li> <a href="#home" data-icon="home"></a>
+        <li> <a href="#menu" data-icon="bars"></a>
+        <li> <a href="#search" data-icon="search"></a>
+        <li> <a href="#friends" data-icon="user"></a>
+        <li> <a href="#settings" data-icon="gear"></a>
+      </ul>
+    </div>
+  </div>
+</div> 
+<!-- END SEARCH PAGE -->
+
+<!-- FRIENDS PAGE -->
+<div data-role="page" id="friends" data-theme="a">
+  <div data-role="header" data-position="fixed">
+    <h1>WellesleyBites</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+    <p>Friends
+  </div>
+
+  <div data-role="footer" data-position="fixed">
+    <div data-role="navbar">
+      <ul>
+        <li> <a href="#home" data-icon="home"></a>
+        <li> <a href="#menu" data-icon="bars"></a>
+        <li> <a href="#search" data-icon="search"></a>
+        <li> <a href="#friends" data-icon="user"></a>
+        <li> <a href="#settings" data-icon="gear"></a>
+      </ul>
+    </div>
+  </div>
+</div> 
+<!-- END FRIENDS PAGE -->
+
+<!-- SETTINGS PAGE -->
+<div data-role="page" id="settings" data-theme="a">
+  <div data-role="header" data-position="fixed">
+    <a data-icon="back" data-rel="back" back-btn="true">Back</a>
+    <h1>Settings</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+  <h4>Food Preferences</h4>
+  <ul data-role="listview" class="ui-listview-inset ui-corner-all">
+	<li><a href="#">Diet Restrictions</a></li>
+	<li><a href="#">Priorities</a></li>
+  </ul>
+  <ul data-role="listview" class="ui-listview-inset ui-corner-all">
+	<li>My Location
+	<select name="my-location" id="my-location" data-role="slider" data-mini="true">
+	<option value="off">Off</option>
+	<option value="on">On</option>
+	</select></li>
+	<li>Notifications
+	<select name="my-notifications" id="my-notifications" data-role="slider" data-mini="true">
+	<option value="off">Off</option>
+	<option value="on">On</option>
+	</select></li>
+  </ul>
+  <ul data-role="listview" class="ui-listview-inset ui-corner-all">
+	<li><a href="#">Account Information</a></li>
+	<li><a href="#">Contact Us</a></li>
+  </ul>
+
+  <p><a href="#" data-role="button">Logout</a></p>
+
+  </div>
+
+  <div data-role="footer" data-position="fixed">
+    <div data-role="navbar">
+      <ul>
+        <li> <a href="#home" data-icon="home"></a>
+        <li> <a href="#menu" data-icon="bars"></a>
+        <li> <a href="#search" data-icon="search"></a>
+        <li> <a href="#friends" data-icon="user"></a>
+        <li> <a href="#settings" data-icon="gear"></a>
+      </ul>
+    </div>
+  </div>
+</div> 
+<!-- END SETTINGS PAGE -->
+
+</body>
+</html>

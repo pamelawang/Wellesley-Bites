@@ -1,0 +1,1488 @@
+<!DOCTYPE html>
+
+<!--WellesleyBites
+	Sheridan McKisick, Pamela Wang, Giovi Mier
+	CS 220: P5
+	
+	The first computer-based implementation of our project.
+  -->
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+  <link rel="stylesheet" href="custom.css">
+  <link rel="stylesheet" type="text/css" href="landscape.css" media="screen and (orientation:landscape)">
+  <link rel="stylesheet" href="themes/byteme.min.css" />
+  <link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
+  <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+  <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+  <title>WellesleyBites</title>
+</head>
+
+<body>
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <!-- HOME PAGE -->
+  <div data-role="page" id="home" data-theme="a">
+    <div data-role="header" data-position="fixed">
+      <h1>WellesleyBites</h1>
+    </div><!-- end header div -->
+
+    <div data-role="main" class="ui-content">
+      <img src="images/banner.jpg" width="100%" alt="Wellesley Dining Food">
+      <p><hr></p>
+    	<h2 id="currentMeal">LUNCH</h2>
+      <span id="currentMealTime"><p>11:30 AM - 2:00 PM</p></span>
+      <p><hr></p>
+      <a href="#feedmepopup" data-rel="popup" data-position-to="window" 
+         data-transition="fade" class="ui-btn ui-corner-all ui-shadow">
+  	     Where should I eat?</a>
+    </div><!-- end ui-content div-->
+
+    <div data-role="popup" id="feedmepopup" class="ui-corner-all">
+      <div data-role="header" class="ui-corner-top">
+        <h1>Where should I eat?</h1>
+      </div>
+      <div data-role="main" class="ui-corner-bottom ui-content">
+        <p>Based on your preferences, you should eat at Bates.</p>
+        <p><a href="#priorities">Why?</a></p>
+        	 <a href="#" data-role="button" data-inline="true" 
+              data-rel="back" data-theme="c">Okay</a>    
+      </div>
+    </div><!-- end pop-up div-->
+
+    <div data-role="footer" data-position="fixed" data-theme="b">
+      <div data-role="navbar">
+        <ul>
+          <li> <a href="#home" data-icon="home"></a>
+          <li> <a href="#menu" data-icon="bars"></a>
+          <li> <a href="#search" data-icon="search"></a>
+          <li> <a href="#friends" data-icon="user"></a>
+          <li> <a href="#settings" data-icon="gear"></a>
+        </ul>
+      </div>
+    </div><!-- end footer div -->
+
+  </div>
+  <!-- END HOME PAGE -->
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- MENUS PAGE -->
+<div data-role="page" id="menu" data-theme="a">
+  <div data-role="header" data-position="fixed">
+    <h1>Menus</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+
+    <p><a href="#compareall" data-role="button">Compare All Dining Halls</a></p>
+    <!-- grid of images for menu links -->
+  	<div class="ui-grid-a">
+      <div class="ui-block-a">
+      	<li><a href="#lulu">
+      	  <img src="images/bae_pao.jpg" width="100%"></a>
+      	</li>
+      	<li><a href="#pomeroy">
+      	  <img src="images/pomeroy.jpg" width="100%"></a>
+      	</li>
+      	<li><a href="#tower">
+      	  <img src="images/tower.jpg" width="100%"></a>
+      	</li>
+		  </div><!-- end block a -->
+      <div class="ui-block-b">
+        <li><a href="#bates">
+      	   <img src="images/bates.jpg" width="100%"></a>
+        </li>
+        <li><a href="#stone-d">
+     		   <img src="images/stone.jpg" width="100%"></a>
+        </li>
+        <li><a href="#emporium">
+     		   <img src="images/campus_center_emporium.jpg" width="100%"></a>
+        </li>
+	     </div><!-- end block b -->	  
+    </div><!-- end ui-grid-a -->
+
+  </div><!-- end main ui-content -->
+
+  <div data-role="footer" data-position="fixed" data-theme="b">
+    <div data-role="navbar">
+      <ul>
+        <li> <a href="#home" data-icon="home"></a>
+        <li> <a href="#menu" data-icon="bars"></a>
+        <li> <a href="#search" data-icon="search"></a>
+        <li> <a href="#friends" data-icon="user"></a>
+        <li> <a href="#settings" data-icon="gear"></a>
+      </ul>
+    </div>
+  </div><!-- end footer div -->
+</div>
+<!-- END MENUS PAGE -->
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- COMPARE ALL PAGE -->
+<div data-role="page" id="compareall" data-theme="a">
+  <div data-role="header" data-position="fixed">
+    <a data-icon="back" data-rel="back" back-btn="true">Back</a>
+    <h1>Compare All</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+
+<div data-role="tabs" id="tabs">
+  <div data-role="navbar">
+    <ul>
+      <li><a href="#breakfast" data-ajax="false">Breakfast</a></li>
+      <li><a href="#lunch" data-ajax="true">Lunch</a></li>
+      <li><a href="#dinner" data-ajax="false">Dinner</a></li>
+    </ul>
+  </div>
+
+  <div id="breakfast" class="ui-body-d ui-content">
+    <div class="landscape-menu" id="lulu-lunch">
+     <h4>Lulu</h4>
+     <p>Make your own Waffle Bar, Oatmeal Bar, Hard Boiled Eggs, Fresh Fruit, Pastries, Yogurt, and Cottage Cheese
+    </div>
+    <div class="landscape-menu" id="bates-lunch">
+      <h4>Bates</h4>
+       <p>Eggs Benedict Pizza on Fresh Claflin Dough with Buttermilk Pancakes, Hash Browns and Pork Bacon
+    </div>
+    <div class="landscape-menu" id="pom-lunch">
+     <h4>Pomeroy</h4>
+     <p>Banana Coconut Bake served With Soy “Bacon” and Breakfast Potatoes
+    </div>
+    <div class="landscape-menu" id="stoned-lunch">
+     <h4>Stone Davis</h4>
+     <p>Fried Egg on Toast, Spinach Frittata, French Toast, and Turkey Sausage Links
+    </div>
+    <div class="landscape-menu" id="tower-lunch">
+     <h4>Tower</h4>
+      <p>Cream of Rice, Egg &amp; Cheese Croissant, Cinnamon French Toast accompanied by Pork Sausage and Tater Triangles 
+    </div>
+  </div>
+
+  <div id="lunch">
+    <div class="landscape-menu" id="lulu-lunch">
+	   <h4>Lulu</h4>
+	   <p>Spanish Vegetable Chicken Stew; Spanish Roasted Vegetable Stew; Brown Rice
+    </div>
+    <div class="landscape-menu" id="bates-lunch">
+    	<h4>Bates</h4>
+	     <p>Tandoori Chicken and Palak Paneer with Vegetable &amp; Kelp Curry, Naan Bread, Lentils and Rice Bar with our Special “Produce 365” selection
+    </div>
+    <div class="landscape-menu" id="pom-lunch">
+	   <h4>Pomeroy</h4>
+	   <p>Vegan Pho Bar with Broth, Glass Noodles, Tofu, Shredded Carrots, Edamame, Cabbage, Onions accompanied by Steamed Rice, Texas Chili, Jicama, and Peas
+    </div>
+    <div class="landscape-menu" id="stoned-lunch">
+	   <h4>Stone Davis</h4>
+	   <p>Poulet Provencal (roasted chicken with fresh tomato), Brown Rice, Tunisian Vegetable Couscous, Steamed Green Beans, Roasted Cauliflower
+    </div>
+    <div class="landscape-menu" id="tower-lunch">
+	   <h4>Tower</h4>
+      <p>Swedish Korvstroganoff, Vegetarian Stroganoff accompanied by Steamed Rice, Brussels Sprouts, and Butternut Squash 
+    </div>
+  </div>
+
+  <div id="dinner" class="ui-body-d ui-content">
+    <div class="landscape-menu" id="lulu-lunch">
+     <h4>Lulu</h4>
+     <p>Roasted Turkey with Gravy; Herbed Stuffing; Buttermilk Mashed Potatoes; Roasted Butternut Squash; Peas
+    </div>
+    <div class="landscape-menu" id="bates-lunch">
+      <h4>Bates</h4>
+       <p>Niman Ranch Pork Tips with our House Made Mango Chipotle BBQ Sauce and Layered Cheese Lasagna, Roasted Cinnamon Apples, Steamed Broccoli and a Lentil and Rice Bar Accompanied with our Special “Produce 365” Selection
+    </div>
+    <div class="landscape-menu" id="pom-lunch">
+     <h4>Pomeroy</h4>
+     <p>Tofu Ratatouille, Walnut Burgers and Macaroni &amp; Cheese Accompanied by Basil Whipped Potatoes, Steamed Green Beans, and Steamed Cauliflower
+    </div>
+    <div class="landscape-menu" id="stoned-lunch">
+     <h4>Stone Davis</h4>
+     <p>Rotisserie Chicken, Oven Roasted Potatoes, Steamed Carrots, Roasted Corn, and Pan Gravy
+    </div>
+    <div class="landscape-menu" id="tower-lunch">
+     <h4>Tower</h4>
+      <p>Russian Kotlety, Vegan Meatballs, Seven Vegetable Couscous with Green Beans, and Roast Turnips
+    </div>
+  </div>
+</div>
+
+  <div data-role="footer" data-position="fixed" data-theme="b">
+    <div data-role="navbar">
+      <ul>
+        <li> <a href="#home" data-icon="home"></a>
+        <li> <a href="#menu" data-icon="bars"></a>
+        <li> <a href="#search" data-icon="search"></a>
+        <li> <a href="#friends" data-icon="user"></a>
+        <li> <a href="#settings" data-icon="gear"></a>
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
+
+<script>
+$(document).on("pagecreate", "#compareall", function(){
+    
+    $( "#tabs" ).tabs("option", "active", 1);
+
+});
+</script>
+
+<!-- END COMPARE ALL PAGE -->
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- LULU PAGE -->
+<div data-role="page" id="lulu" data-theme="a">
+  <div data-role="header" data-position="fixed">
+    <a data-icon="back" data-rel="back" back-btn="true">Back</a>
+    <h1>Bae Pao Lu Chow</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+
+<div data-role="tabs" id="tabs2">
+  <div data-role="navbar">
+    <ul>
+      <li><a href="#breakfast" data-ajax="false">Breakfast</a></li>
+      <li><a href="#lunch" data-ajax="false">Lunch</a></li>
+      <li><a href="#dinner" data-ajax="false">Dinner</a></li>
+    </ul>
+  </div>
+
+  <div id="breakfast" class="ui-body-d ui-content">
+    <h3>Continental Breakfast</h3>
+    <p>Make your own Waffle Bar, Oatmeal Bar, Hard Boiled Eggs, 
+      Fresh Fruit, Pastries, Yogurt, and Cottage Cheese
+  </div>
+  <div id="lunch" class="ui-body-d ui-content">
+    <h3>Lunch</h3>
+	  <h4>Soup</h4>
+    <p>Beef Barley Soup, Chef’s Soup Selection
+    <h4>Pizza</h4>
+    <p>Pesto &amp; Cheese, Giuseppe Pizza, and Chef’s Artisan
+    <h4>Grill</h4>
+    <p>Classic American Burger, Black Bean Burger, Rosemary Fries
+    <h4>Pure</h4>
+    <p>Nut Loaf with Lemon Fennel Soup
+    <h4>Fusion Lunch</h4>
+    <p>Spanish Vegetable Chicken Stew, Spanish Roasted Vegetable Stew, Brown Rice
+  </div>
+  <div id="dinner" class="ui-body-d ui-content">
+    <h3>Dinner</h3>
+    <h4>Soup</h4>
+    <p>Beef Barley Soup, Chef’s Soup Selection
+    <h4>Pizza</h4>
+    <p>Pesto &amp; Cheese, Giuseppe Pizza, and Chef’s Artisan
+    <h4>Grill</h4>
+    <p>Classic American Burger, Black Bean Burger, Rosemary Fries
+    <h4>Pure</h4>
+    <p>Nut Loaf with Lemon Fennel Soup
+    <h4>Homestyle</h4>
+    <p>Roasted Turkey with Gravy, Herbed Stuffing, Buttermilk Mashed 
+      Potatoes, Roasted Butternut Squash; Peas
+  </div>
+</div>
+</div>
+
+  <div data-role="footer" data-position="fixed" data-theme="b">
+    <div data-role="navbar">
+      <ul>
+        <li> <a href="#home" data-icon="home"></a>
+        <li> <a href="#menu" data-icon="bars"></a>
+        <li> <a href="#search" data-icon="search"></a>
+        <li> <a href="#friends" data-icon="user"></a>
+        <li> <a href="#settings" data-icon="gear"></a>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<script>
+$(document).on("pagecreate", "#lulu", function(){
+    
+    $( "#tabs2" ).tabs("option", "active", 1);
+
+});
+</script>
+
+
+<!-- END LULU PAGE -->
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- BATES PAGE -->
+<div data-role="page" id="bates" data-theme="a">
+  <div data-role="header" data-position="fixed">
+    <a data-icon="back" data-rel="back" back-btn="true">Back</a>
+    <h1>Bates</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+
+<div data-role="tabs" id="tabs3">
+  <div data-role="navbar">
+    <ul>
+      <li><a href="#breakfast" data-ajax="false">Breakfast</a></li>
+      <li><a href="#lunch" data-ajax="false">Lunch</a></li>
+      <li><a href="#dinner" data-ajax="false">Dinner</a></li>
+    </ul>
+  </div>
+
+  <div id="breakfast" class="ui-body-d ui-content">
+    <h3>Breakfast</h3>
+    <h4>Daily</h4>
+    <p>Make Your Own Waffle bar, Scrambled Eggs, Hardboiled Eggs, 
+      Fresh Fruit, Pastries from the Claflin Bakeshop, Yogurt and Cottage Cheese
+    <h4>Special</h4>
+    <p>Eggs Benedict Pizza on Fresh Claflin Dough with Buttermilk 
+      Pancakes, Hash Browns and Pork Bacon
+  </div>
+  <div id="lunch" class="ui-body-d ui-content">
+  	<h3>Lunch</h3>
+    <h4>Soup</h4>
+    <p>Beef Noodle Soup, Chef’s Soup Selection
+    <h4>Global Grill</h4>
+    <p>Russian Piroshki; Fried Sweet Dough with Turkey or Vegetable 
+      Fillings on Mixed Greens with Dill and Sour Cream
+    <h4>Fusion</h4>
+    <p>Lo Mein Noodle Bar
+    <h4>Homestyle Lunch</h4>
+    <p>Tandoori Chicken and Palak Paneer with Vegetable &amp; 
+      Kelp Curry, Naan Bread, Lentils and Rice Bar with our 
+      Special “Produce 365” selection
+  </div>
+  <div id="dinner" class="ui-body-d ui-content">
+    <h3>Dinner</h3>
+    <h4>Soup</h4>
+    <p>Beef Noodle Soup, Chef’s Soup Selection
+    <h4>Global Grill</h4>
+    <p>Russian Piroshki; Fried Sweet Dough with Turkey or Vegetable 
+      Fillings on Mixed Greens with Dill and Sour Cream
+    <h4>Fusion</h4>
+    <p>Lo Mein Noodle Bar
+    <h4>Homestyle Dinner</h4>
+    <p>Niman Ranch Pork Tips with our House Made Mango Chipotle BBQ 
+      Sauce and Layered Cheese Lasagna, Roasted Cinnamon Apples, 
+      Steamed Broccoli and a Lentil and Rice Bar Accompanied with 
+      our Special “Produce 365” Selection
+  </div>
+</div>
+</div>
+
+  <div data-role="footer" data-position="fixed" data-theme="b">
+    <div data-role="navbar">
+      <ul>
+        <li> <a href="#home" data-icon="home"></a>
+        <li> <a href="#menu" data-icon="bars"></a>
+        <li> <a href="#search" data-icon="search"></a>
+        <li> <a href="#friends" data-icon="user"></a>
+        <li> <a href="#settings" data-icon="gear"></a>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<script>
+$(document).on("pagecreate", "#bates", function(){
+    
+    $( "#tabs3" ).tabs("option", "active", 1);
+
+});
+</script>
+
+
+<!-- END BATES PAGE -->
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- POMEROY PAGE -->
+<div data-role="page" id="pomeroy" data-theme="a">
+  <div data-role="header" data-position="fixed">
+    <a data-icon="back" data-rel="back" back-btn="true">Back</a>
+    <h1>Pomeroy</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+
+<div data-role="tabs" id="tabs4">
+  <div data-role="navbar">
+    <ul>
+      <li><a href="#breakfast" data-ajax="false">Breakfast</a></li>
+      <li><a href="#lunch" data-ajax="false">Lunch</a></li>
+      <li><a href="#dinner" data-ajax="false">Dinner</a></li>
+    </ul>
+  </div>
+
+  <div id="breakfast" class="ui-body-d ui-content">
+    <h3>Breakfast</h3>
+    <h4>Daily</h4>
+    <p>Hard Boiled Eggs, Scrambled Eggs, Waffles, Oatmeal, 
+      Fresh Fruit, and Pastries
+    <h4>Special</h4>
+    <p>Banana Coconut Bake served With Soy “Bacon” and Breakfast Potatoes
+  </div>
+  <div id="lunch" class="ui-body-d ui-content">
+    <h3>Lunch</h3>
+    <p>Vegan Pho Bar with Broth, Glass Noodles, Tofu, Shredded Carrots, 
+      Edamame, Cabbage, Onions accompanied by Steamed Rice, Texas Chili, 
+      Jicama, and Peas
+    <h4>Soup</h4>
+    <p>Corn Chowder
+  </div>
+  <div id="dinner" class="ui-body-d ui-content">
+    <h3>Dinner</h3>
+    <p>Tofu Ratatouille, Walnut Burgers and Macaroni &amp; Cheese 
+      Accompanied by Basil Whipped Potatoes, Steamed Green Beans, 
+      and Steamed Cauliflower
+  </div>
+</div>
+</div>
+
+  <div data-role="footer" data-position="fixed" data-theme="b">
+    <div data-role="navbar">
+      <ul>
+        <li> <a href="#home" data-icon="home"></a>
+        <li> <a href="#menu" data-icon="bars"></a>
+        <li> <a href="#search" data-icon="search"></a>
+        <li> <a href="#friends" data-icon="user"></a>
+        <li> <a href="#settings" data-icon="gear"></a>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<script>
+$(document).on("pagecreate", "#pomeroy", function(){
+    
+    $( "#tabs4" ).tabs("option", "active", 1);
+
+});
+</script>
+
+
+<!-- END POMEROY PAGE -->
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- STONE-D PAGE -->
+<div data-role="page" id="stone-d" data-theme="a">
+  <div data-role="header" data-position="fixed">
+    <a data-icon="back" data-rel="back" back-btn="true">Back</a>
+    <h1>Stone-D</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+
+<div data-role="tabs" id="tabs5">
+  <div data-role="navbar">
+    <ul>
+      <li><a href="#breakfast" data-ajax="false">Breakfast</a></li>
+      <li><a href="#lunch" data-ajax="false">Lunch</a></li>
+      <li><a href="#dinner" data-ajax="false">Dinner</a></li>
+    </ul>
+  </div>
+
+  <div id="breakfast" class="ui-body-d ui-content">
+    <h3>Breakfast</h3>
+    <h4>Daily</h4>
+    <p>Make your own waffle bar, Scrambled Eggs, Hardboiled Eggs, 
+      Steal Cut Oatmeal, Egg Whites to order, Fresh Fruit, Pastries, 
+      Yogurt and Cottage Cheese
+    <h4>Special</h4>
+    <p>Fried Egg on Toast, Spinach Frittata, French Toast, and Turkey Sausage Links
+  </div>
+  <div id="lunch" class="ui-body-d ui-content">
+	  <h3>Lunch</h3>
+    <h4>Soup</h4>
+    <p>Potato Soup, Pea Soup
+    <h4>Grill</h4>
+    <p>Turkey burgers and Tofu Burgers, topped with Cheese and BBQ sauce, served with seasoned Ranch Chips
+    <h4>Pizza</h4>
+    <p>Broccoli Flatbread, Pepperoni Flatbread, Ricotta and Tomato Flatbread
+    <h4>Hot Bar</h4>
+    <p>Rosa Sauce (tomato cream sauce), Garlic Butter Sauce
+    <h4>Homestyle Lunch</h4>
+    <p>Poulet Provencal (roasted chicken with fresh tomato), Brown Rice, Tunisian Vegetable Couscous, Steamed Green Beans, Roasted Cauliflower
+  </div>
+  <div id="dinner" class="ui-body-d ui-content">
+    <h3>Dinner</h3>
+    <h4>Soup</h4>
+    <p>Potato Soup, Pea Soup
+    <h4>Grill</h4>
+    <p>Turkey burgers and Tofu Burgers, topped with Cheese and BBQ sauce, served with seasoned Ranch Chips
+    <h4>Pizza</h4>
+    <p>Broccoli Flatbread, Pepperoni Flatbread, Ricotta and Tomato Flatbread
+    <h4>Hot Bar</h4>
+    <p>Rosa Sauce (tomato cream sauce), Garlic Butter Sauce
+    <h4>Homestyle Dinner</h4>
+    <p>Rotisserie Chicken, Oven Roasted Potatoes, Steamed Carrots, Roasted Corn, and Pan Gravy
+    <h4>Late Night</h4>
+    <p>Black Bean Burgers, Cheeseburgers, Hamburgers, and Hot Dogs
+  </div>
+</div>
+</div>
+
+  <div data-role="footer" data-position="fixed" data-theme="b">
+    <div data-role="navbar">
+      <ul>
+        <li> <a href="#home" data-icon="home"></a>
+        <li> <a href="#menu" data-icon="bars"></a>
+        <li> <a href="#search" data-icon="search"></a>
+        <li> <a href="#friends" data-icon="user"></a>
+        <li> <a href="#settings" data-icon="gear"></a>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<script>
+$(document).on("pagecreate", "#stone-d", function(){
+    
+    $( "#tabs5" ).tabs("option", "active", 1);
+
+});
+</script>
+
+
+<!-- END STOnE-D PAGE -->
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- TOWER PAGE -->
+<div data-role="page" id="tower" data-theme="a">
+  <div data-role="header" data-position="fixed">
+    <a data-icon="back" data-rel="back" back-btn="true">Back</a>
+    <h1>Tower</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+
+<div data-role="tabs" id="tabs6">
+  <div data-role="navbar">
+    <ul>
+      <li><a href="#breakfast" data-ajax="false">Breakfast</a></li>
+      <li><a href="#lunch" data-ajax="false">Lunch</a></li>
+      <li><a href="#dinner" data-ajax="false">Dinner</a></li>
+    </ul>
+  </div>
+
+  <div id="breakfast" class="ui-body-d ui-content">
+    <h3>Breakfast</h3>
+    <h4>Daily</h4>
+    <p>Make your own waffle bar, Scrambled Eggs, Hardboiled Eggs, Fresh Fruit, Pastries, Yogurt and Cottage Cheese, Egg Whites upon request
+    <h4>Special</h4>
+    <p>Cream of Rice, Egg &amp; Cheese Croissant, Cinnamon French Toast accompanied by Pork Sausage and Tater Triangles
+  </div>
+  <div id="lunch" class="ui-body-d ui-content">
+	   <h3>Lunch</h3>
+     <h4>Soup</h4>
+     <p>Rassolnik Soup, Classic Tomato Soup
+     <h4>Pizza/Pasta</h4>
+     <p>Garlic Breadsticks, Caprese Baked Pretzel, Crab Salad Baked Pretzel, Vegan Pizza with Pasta and Marinara or Pink Sauce
+     <h4>Vegan/Grain</h4>
+     <p>Brown Rice, Creole Red Beans, Garlicky Greens Beans
+     <h4>Grill</h4>
+     <p>Canadian Donair with French Fries
+     <h4>Fusion/Allergen Station</h4>
+     <p>Pork Fried Rice or Vegetable Fried Rice
+     <h4>Homestyle Lunch</h4>
+     <p>Swedish Korvstroganoff, Vegetarian Stroganoff accompanied by Steamed Rice, Brussels Sprouts, and Butternut Squash  
+  </div>
+  <div id="dinner" class="ui-body-d ui-content">
+    <h3>Dinner</h3>
+     <h4>Soup</h4>
+     <p>Rassolnik Soup, Classic Tomato Soup
+     <h4>Pizza/Pasta</h4>
+     <p>Garlic Breadsticks, Caprese Baked Pretzel, Crab Salad Baked Pretzel, Vegan Pizza with Pasta and Marinara or Pink Sauce
+     <h4>Vegan/Grain</h4>
+     <p>Brown Rice, Creole Red Beans, Garlicky Greens Beans
+     <h4>Grill</h4>
+     <p>Canadian Donair with French Fries
+     <h4>Fusion/Allergen Station
+     <p>Pork Fried Rice or Vegetable Fried Rice
+     <h4>Homestyle Dinner</h4>
+     <p>Russian Kotlety, Vegan Meatballs, Seven Vegetable Couscous with Green Beans, and Roast Turnips
+  </div>
+</div>
+</div>
+
+  <div data-role="footer" data-position="fixed" data-theme="b">
+    <div data-role="navbar">
+      <ul>
+        <li> <a href="#home" data-icon="home"></a>
+        <li> <a href="#menu" data-icon="bars"></a>
+        <li> <a href="#search" data-icon="search"></a>
+        <li> <a href="#friends" data-icon="user"></a>
+        <li> <a href="#settings" data-icon="gear"></a>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<script>
+$(document).on("pagecreate", "#tower", function(){
+    
+    $( "#tabs6" ).tabs("option", "active", 1);
+
+});
+</script>
+
+
+<!-- END TOWER PAGE -->
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- EMPORIUM PAGE -->
+<div data-role="page" id="emporium" data-theme="a">
+  <div data-role="header" data-position="fixed">
+    <a data-icon="back" data-rel="back" back-btn="true">Back</a>
+    <h1>Emporium</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+    <h3>Campus Center Emporium</h3>
+    <p>Grab a cup of Starbucks coffee and refuel from our selection of snacks and beverages. Fresh sandwiches, sushi and salads to go!
+    <p>Accepts flex dollars, points, cash, and credit cards.
+    <h4>Hours</h4>
+    <p>Monday &amp; Friday: 7:00 AM-8:00 PM
+    <br>Tuesday-Thursday: 7:00 AM-12:00 AM
+    <br> Saturday &amp; Sunday: 12:00 PM-8:00 PM
+  </div>
+
+  <div data-role="footer" data-position="fixed" data-theme="b">
+    <div data-role="navbar">
+      <ul>
+        <li> <a href="#home" data-icon="home"></a>
+        <li> <a href="#menu" data-icon="bars"></a>
+        <li> <a href="#search" data-icon="search"></a>
+        <li> <a href="#friends" data-icon="user"></a>
+        <li> <a href="#settings" data-icon="gear"></a>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END EMPORIUM PAGE -->
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <!-- SEARCH PAGE -->
+  <div data-role="page" data-theme="a" id="search">
+    <div data-role="header" data-position="fixed">
+      <h1>Search</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+
+    <input type="search" name="food-search" id="food-search" value="" placeholder="Search Available Food"/>
+
+    <ul data-role="listview" data-inset="true">
+      <li data-role="list-divider">Quick Search</li>
+      <li><a href="#search_peanuts">Peanut Free</a></li>
+    	<li><a href="#search_gluten">Gluten Free</a></li>
+    	<li><a href="#search_vegetarian">Vegetarian</a></li>
+    	<li><a href="#search_vegan">Vegan</a></li>
+    	<li data-icon="plus"><a href="#">Create Your Own</a></li>
+    </ul>
+
+  </div>
+
+    <div data-role="footer" data-position="fixed" data-theme="b">
+      <div data-role="navbar">
+        <ul>
+          <li> <a href="#home" data-icon="home"></a>
+          <li> <a href="#menu" data-icon="bars"></a>
+          <li> <a href="#search" data-icon="search"></a>
+          <li> <a href="#friends" data-icon="user"></a>
+          <li> <a href="#settings" data-icon="gear"></a>
+        </ul>
+      </div>
+    </div>
+  </div> 
+  <!-- END SEARCH PAGE -->
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <!-- PEANUT RESULTS PAGE -->
+  <div data-role="page" data-theme="a" id="search_peanuts">
+    <div data-role="header" data-position="fixed">
+	    <a data-icon="back" data-rel="back" back-btn="true">Back</a>
+      <h1>Peanut Free</h1>
+    </div>
+
+    <div data-role="main" class="ui-content">
+     <h4>Bae Pao Lu Chow</h4>
+     <p>Spanish Vegetable Chicken Stew; Spanish Roasted Vegetable Stew; Brown Rice
+
+     <h4>Bates</h4>
+     <p>Russian Piroshki; Fried Sweet Dough with Turkey or Vegetable Fillings on Mixed Greens with Dill and Sour Cream
+
+     <h4>Pomeroy</h4>
+     <p>Corn Chowder
+
+     <h4>Stone Davis</h4>
+     <p>Broccoli Flatbread, Pepperoni Flatbread, Ricotta and Tomato Flatbread
+
+     <h4>Tower</h4>
+     <p>Swedish Korvstroganoff, Vegetarian Stroganoff accompanied by Steamed Rice, Brussels Sprouts, and Butternut Squash 
+    </div>
+
+    <div data-role="footer" data-position="fixed" data-theme="b">
+      <div data-role="navbar">
+        <ul>
+          <li> <a href="#home" data-icon="home"></a>
+          <li> <a href="#menu" data-icon="bars"></a>
+          <li> <a href="#search" data-icon="search"></a>
+          <li> <a href="#friends" data-icon="user"></a>
+          <li> <a href="#settings" data-icon="gear"></a>
+        </ul>
+      </div>
+    </div>
+  </div> 
+  <!-- END PEANUT RESULTS PAGE -->
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <!-- GLUTEN RESULTS PAGE -->
+  <div data-role="page" data-theme="a" id="search_gluten">
+    <div data-role="header" data-position="fixed">
+	<a data-icon="back" data-rel="back" back-btn="true">Back</a>
+      <h1>Gluten Free</h1>
+    </div>
+
+    <div data-role="main" class="ui-content">
+     <h4>Bates</h4>
+     <p>Beef Noodle Soup, Chef’s Soup Selection
+
+     <h4>Pomeroy</h4>
+     <p>Vegan Pho Bar with Broth, Glass Noodles, Tofu, Shredded Carrots, Edamame, Cabbage, Onions accompanied by Steamed Rice, Texas Chili, Jicama, and Peas
+
+     <h4>Tower</h4>
+     <p>Rassolnik Soup, Classic Tomato Soup
+    </div>
+
+    <div data-role="footer" data-position="fixed" data-theme="b">
+      <div data-role="navbar">
+        <ul>
+          <li> <a href="#home" data-icon="home"></a>
+          <li> <a href="#menu" data-icon="bars"></a>
+          <li> <a href="#search" data-icon="search"></a>
+          <li> <a href="#friends" data-icon="user"></a>
+          <li> <a href="#settings" data-icon="gear"></a>
+        </ul>
+      </div>
+    </div>
+  </div> 
+  <!-- END GLUTEN RESULTS PAGE -->
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+  <!-- VEGETARIAN RESULTS PAGE -->
+  <div data-role="page" data-theme="a" id="search_vegetarian">
+    <div data-role="header" data-position="fixed">
+	<a data-icon="back" data-rel="back" back-btn="true">Back</a>
+      <h1>Vegetarian</h1>
+    </div>
+
+    <div data-role="main" class="ui-content">
+       <h4>Bae Pao Lu Chow</h4>
+       <p>Spanish Roasted Vegetable Stew; Brown Rice
+
+       <h4>Bates</h4>
+       <p>Palak Paneer with Vegetable &amp; Kelp Curry, Naan Bread, Lentils and Rice Bar with our Special “Produce 365” selection
+
+       <h4>Pomeroy</h4>
+       <p>Vegan Pho Bar with Broth, Glass Noodles, Tofu, Shredded Carrots, Edamame, Cabbage, Onions accompanied by Steamed Rice, Texas Chili, Jicama, and Peas, Corn Chowder
+
+       <h4>Stone Davis</h4>
+       <p>Potato Soup, Pea Soup, Broccoli Flatbread, Ricotta and Tomato Flatbread, Tunisian Vegetable Couscous, Steamed Green Beans, Roasted Cauliflower
+
+       <h4>Tower</h4>
+       <p>Vegetarian Stroganoff accompanied by Steamed Rice, Brussels Sprouts, and Butternut Squash, Classic Tomato Soup 
+    </div>
+
+    <div data-role="footer" data-position="fixed" data-theme="b">
+      <div data-role="navbar">
+        <ul>
+          <li> <a href="#home" data-icon="home"></a>
+          <li> <a href="#menu" data-icon="bars"></a>
+          <li> <a href="#search" data-icon="search"></a>
+          <li> <a href="#friends" data-icon="user"></a>
+          <li> <a href="#settings" data-icon="gear"></a>
+        </ul>
+      </div>
+    </div>
+  </div> 
+  <!-- END VEGETARIAN RESULTS PAGE -->
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+  <!-- VEGAN RESULTS PAGE -->
+  <div data-role="page" data-theme="a" id="search_vegan">
+    <div data-role="header" data-position="fixed">
+	<a data-icon="back" data-rel="back" back-btn="true">Back</a>
+      <h1>Vegan</h1>
+    </div>
+
+    <div data-role="main" class="ui-content">
+      <h4>Bae Pao Lu Chow</h4>
+       <p>Spanish Roasted Vegetable Stew; Brown Rice
+
+       <h4>Bates</h4>
+       <p>Palak Paneer with Vegetable &amp; Kelp Curry, Naan Bread, Lentils and Rice Bar with our Special “Produce 365” selection
+
+       <h4>Pomeroy</h4>
+       <p>Vegan Pho Bar with Broth, Glass Noodles, Tofu, Shredded Carrots, Edamame, Cabbage, Onions accompanied by Steamed Rice, Texas Chili, Jicama, and Peas, Corn Chowder
+
+       <h4>Stone Davis</h4>
+       <p>Tunisian Vegetable Couscous, Steamed Green Beans, Roasted Cauliflower
+    </div>
+
+    <div data-role="footer" data-position="fixed" data-theme="b">
+      <div data-role="navbar">
+        <ul>
+          <li> <a href="#home" data-icon="home"></a>
+          <li> <a href="#menu" data-icon="bars"></a>
+          <li> <a href="#search" data-icon="search"></a>
+          <li> <a href="#friends" data-icon="user"></a>
+          <li> <a href="#settings" data-icon="gear"></a>
+        </ul>
+      </div>
+    </div>
+  </div> 
+  <!-- END VEGAN RESULTS PAGE -->
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+
+
+<!-- FRIENDS PAGE -->
+<div data-role="page" id="friends" data-theme="a">
+  <div data-role="header" data-position="fixed">
+    <h1>Friends</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+    <a href="#invites" class="ui-btn ui-corner-all topbtn">New Invitation</a>
+    <a href="#contacts" class="ui-btn ui-corner-all topbtn">Contacts</a>
+
+    <span id="invite-inbox">
+    <ul data-role="listview" data-theme="c" id="invitelist" data-inset="true">
+      <li data-role="list-divider">Invitations</li>
+      <li><a href="#pending">Received<span class="ui-li-count">2</span></a></li>
+      <li id="sent-count"><a href="#sent">Sent<span class="ui-li-count">2</span></a></li>
+    </ul>
+    </span>
+
+  </div> <!-- end main ui-content -->
+
+  <div data-role="footer" data-position="fixed" data-theme="b">
+    <div data-role="navbar">
+      <ul>
+        <li> <a href="#home" data-icon="home"></a>
+        <li> <a href="#menu" data-icon="bars"></a>
+        <li> <a href="#search" data-icon="search"></a>
+        <li> <a href="#friends" data-icon="user"></a>
+        <li> <a href="#settings" data-icon="gear"></a>
+      </ul>
+    </div>
+  </div> <!-- end footer class -->
+
+</div>
+<!-- END FRIENDS PAGE -->
+
+<script>
+  // adds a new invitation (with default values) to the "sent" page,
+  // when the confirm button is clicked during the "New Invitation" process
+  $(document).on("tap", "#confirm-invite", function() {
+    $('#invite-inbox').html('<ul data-role="listview" data-theme="c" id="invitelist" data-inset="true">'
+      + '<li data-role="list-divider">Invitations</li>'
+      + '<li><a href="#pending">Received<span class="ui-li-count">2</span></a></li>'
+      + '<li><a href="#sent">Sent<span class="ui-li-count">3</span></a></li>'
+      + '</ul>').trigger("create");
+
+    $('#new-invite').html('<ul data-role="listview" data-inset="true" data-theme="c">'
+      + '<li data-role="list-divider">Sent Invitations</li>'
+      + '<li data-icon="edit"><a href="#">'
+      + '<h2>To: Org E-Board</h2>'
+      + '<p>Eating lunch in Stone-Davis today.</p></a></li>'
+      + '<li data-icon="edit"><a href="#">'
+      + '<h2>To: Dorm Friends</h2>'
+      + '<p>Eating lunch in Pomeroy today.</p></a></li>'
+      + '<li data-icon="edit"><a href="#">'
+      + '<h2>To: Anna, Erin, Martha</h2>'
+      + '<p>Eating dinner in Lulu today.</p></a></li></ul>').trigger("create");  
+  });
+</script>
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- PENDING PAGE -->
+<div data-role="page" id="pending" data-theme="a">
+  <div data-role="header" data-position="fixed">
+    <a data-icon="back" data-rel="back" back-btn="true">Back</a>
+    <h1>Friends</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+    <!--
+    <a href="#invites" class="ui-btn ui-btn-inline ui-corner-all topbtn">Invite</a>
+    <a href="#contacts" class="ui-btn ui-btn-inline ui-corner-all topbtn">Contacts</a>
+    -->
+    <ul data-role="listview" data-inset="true" data-theme="c">
+      <li data-role="list-divider">Received Invitations</li>
+      <li>
+        <a href="#">
+        <h2>Org E-Board</h2>
+        <p>Eating lunch in Bates today.</p>
+        <fieldset data-role="controlgroup" data-type="horizontal" data-role="fieldcontain" data-mini="true">
+        <input type="radio" name="radio-choice-1" id="radio-choice-1" value="choice-1" checked="checked" />
+        <label for="radio-choice-1">Yes</label>
+        <input type="radio" name="radio-choice-1" id="radio-choice-2" value="choice-2"  />
+        <label for="radio-choice-2">Maybe</label>
+        <input type="radio" name="radio-choice-1" id="radio-choice-3" value="choice-3"  />
+        <label for="radio-choice-3">No</label>
+      </fieldset>
+        </a>
+      </li>
+
+      <li>
+        <a href="#">
+        <h2>Wendy</h2>
+        <p>Eating lunch in Stone-Davis today.</p>
+        <fieldset data-role="controlgroup" data-type="horizontal" data-role="fieldcontain" data-mini="true">
+          <input type="radio" name="radio-choice-2" id="radio-choice-4" value="choice-4" checked="checked" />
+          <label for="radio-choice-4">Yes</label>
+          <input type="radio" name="radio-choice-2" id="radio-choice-5" value="choice-5"  />
+          <label for="radio-choice-5">Maybe</label>
+          <input type="radio" name="radio-choice-2" id="radio-choice-6" value="choice-6"  />
+          <label for="radio-choice-6">No</label>
+        </fieldset>
+        </a>
+      </li>
+    </ul>
+
+  </div> <!-- end main ui-content -->
+
+  <div data-role="footer" data-position="fixed" data-theme="b">
+    <div data-role="navbar">
+      <ul>
+        <li> <a href="#home" data-icon="home"></a>
+        <li> <a href="#menu" data-icon="bars"></a>
+        <li> <a href="#search" data-icon="search"></a>
+        <li> <a href="#friends" data-icon="user"></a>
+        <li> <a href="#settings" data-icon="gear"></a>
+      </ul>
+    </div>
+  </div> <!-- end footer class -->
+
+</div>
+<!-- END PENDING PAGE -->
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- SENT PAGE -->
+<div data-role="page" id="sent" data-theme="a">
+  <div data-role="header" data-position="fixed">
+    <a data-icon="back" data-rel="back" back-btn="true">Back</a>
+    <h1>Friends</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+    <!--
+    <a href="#invites" class="ui-btn ui-btn-inline ui-corner-all topbtn">Invite</a>
+    <a href="#contacts" class="ui-btn ui-btn-inline ui-corner-all topbtn">Contacts</a>
+    -->
+
+    <span id="new-invite">
+      <ul data-role="listview" data-inset="true" data-theme="c">
+        <li data-role="list-divider">Sent Invitations</li>
+        <li data-icon="edit">
+          <a href="#">
+          <h2>To: Dorm Friends</h2>
+          <p>Eating lunch in Pomeroy today.</p>
+          </a>
+        </li>
+        <li data-icon="edit">
+          <a href="#">
+          <h2>To: Anna, Erin, Martha</h2>
+          <p>Eating dinner in Lulu today.</p>
+          </a>
+        </li>
+      </ul>
+    </span>
+
+  </div> <!-- end main ui-content -->
+
+  <div data-role="footer" data-position="fixed" data-theme="b">
+    <div data-role="navbar">
+      <ul>
+        <li> <a href="#home" data-icon="home"></a>
+        <li> <a href="#menu" data-icon="bars"></a>
+        <li> <a href="#search" data-icon="search"></a>
+        <li> <a href="#friends" data-icon="user"></a>
+        <li> <a href="#settings" data-icon="gear"></a>
+      </ul>
+    </div>
+  </div> <!-- end footer class -->
+
+</div>
+<!-- END SENT PAGE -->
+
+
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- INVITES PAGE -->
+<div data-role="page" id="invites" data-theme="a">
+  <div data-role="header" data-position="fixed">
+    <a data-icon="back" data-rel="back" back-btn="true">Back</a>
+    <h1>Invite Friends</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+    
+    <a href="#invites2" data-role="button">Next</a>
+
+    <form>
+      <ul data-role="listview" data-inset="true" data-theme="c">
+        <li data-role="list-divider">Choose a meal...</li>
+      </ul>
+      <fieldset data-role="controlgroup" data-theme="c">
+        <input type="radio" name="radio-choice-v2" id="radio-choice-v2a" value="on" checked="checked">
+        <label for="radio-choice-v2a">Breakfast</label>
+        <input type="radio" name="radio-choice-v2" id="radio-choice-v2b" value="off">
+        <label for="radio-choice-v2b">Lunch</label>
+        <input type="radio" name="radio-choice-v2" id="radio-choice-v2c" value="other">
+        <label for="radio-choice-v2c">Dinner</label>
+      </fieldset>
+    </form>
+  </div> <!-- end main ui-content -->
+
+  <div data-role="footer" data-position="fixed" data-theme="b">
+    <div data-role="navbar">
+      <ul>
+        <li> <a href="#home" data-icon="home"></a>
+        <li> <a href="#menu" data-icon="bars"></a>
+        <li> <a href="#search" data-icon="search"></a>
+        <li> <a href="#friends" data-icon="user"></a>
+        <li> <a href="#settings" data-icon="gear"></a>
+      </ul>
+    </div>
+  </div> <!-- end footer class -->
+
+</div>
+<!-- END INVITES PAGE -->
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- INVITES2 PAGE -->
+<div data-role="page" id="invites2" data-theme="a">
+  <div data-role="header" data-position="fixed">
+    <a data-icon="back" data-rel="back" back-btn="true">Back</a>
+    <h1>Invite Friends</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+    
+    <a href="#invites3" data-role="button">Next</a>
+
+    <form>
+      <ul data-role="listview" data-inset="true" data-theme="c">
+        <li data-role="list-divider">Choose a dining hall...</li>
+      </ul>
+      <fieldset data-role="controlgroup" data-theme="c">
+        <input type="radio" name="radio-choice-v-2" id="radio-choice-v-2a" value="on" checked="checked">
+        <label for="radio-choice-v-2a">Bae Pao Lu Chow</label>
+        <input type="radio" name="radio-choice-v-2" id="radio-choice-v-2b" value="off">
+        <label for="radio-choice-v-2b">Bates</label>
+        <input type="radio" name="radio-choice-v-2" id="radio-choice-v-2c" value="other">
+        <label for="radio-choice-v-2c">Pomeroy</label>
+        <input type="radio" name="radio-choice-v-2" id="radio-choice-v-2d" value="off">
+        <label for="radio-choice-v-2d">Stone-Davis</label>
+        <input type="radio" name="radio-choice-v-2" id="radio-choice-v-2e" value="other">
+        <label for="radio-choice-v-2e">Tower</label>
+      </fieldset>
+    </form>
+  </div> <!-- end main ui-content -->
+
+  <div data-role="footer" data-position="fixed" data-theme="b">
+    <div data-role="navbar">
+      <ul>
+        <li> <a href="#home" data-icon="home"></a>
+        <li> <a href="#menu" data-icon="bars"></a>
+        <li> <a href="#search" data-icon="search"></a>
+        <li> <a href="#friends" data-icon="user"></a>
+        <li> <a href="#settings" data-icon="gear"></a>
+      </ul>
+    </div>
+  </div> <!-- end footer class -->
+
+</div>
+<!-- END INVITES2 PAGE -->
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- INVITES3 PAGE -->
+<div data-role="page" id="invites3" data-theme="a">
+  <div data-role="header" data-position="fixed">
+    <a data-icon="back" data-rel="back" back-btn="true">Back</a>
+    <h1>Invite Friends</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+    
+    <a href="#invitepopup" data-role="button" data-rel="popup" data-position-to="window" 
+         data-transition="fade">Send Invitation</a>
+
+    <div data-role="popup" id="invitepopup" class="ui-corner-all">
+      <div data-role="header" class="ui-corner-top">
+        <h1>Send Invitation</h1>
+      </div>    
+      <div data-role="main" class="ui-corner-bottom ui-content">
+        <p>Would you like to send this invitation?</p>
+         <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-c" data-rel="back">Cancel</a>
+        <a href="#friends" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-c" data-transition="fade" id="confirm-invite">Confirm</a>    
+      </div>
+    </div><!-- end pop-up div-->
+
+    <form>
+      <ul data-role="listview" data-inset="true" data-theme="c">
+       <li data-role="list-divider">Invite a friend or group...</li>
+      </ul>
+      <fieldset data-role="controlgroup" data-theme="c">
+        <input type="checkbox" name="checkbox-v-2a" id="checkbox-v-2a">
+        <label for="checkbox-v-2a">Major Friends</label>
+        <input type="checkbox" name="checkbox-v-2b" id="checkbox-v-2b">
+        <label for="checkbox-v-2b">Org E-Board</label>
+        <input type="checkbox" name="checkbox-v-2c" id="checkbox-v-2c">
+        <label for="checkbox-v-2c">Dorm Friends</label>
+        <input type="checkbox" name="checkbox-v-2d" id="checkbox-v-2d">
+        <label for="checkbox-v-2d">Major Friends</label>
+        <input type="checkbox" name="checkbox-v-2e" id="checkbox-v-2e">
+        <label for="checkbox-v-2e">Anna</label>
+        <input type="checkbox" name="checkbox-v-2f" id="checkbox-v-2f">
+        <label for="checkbox-v-2f">Emily</label>
+        <input type="checkbox" name="checkbox-v-2g" id="checkbox-v-2g">
+        <label for="checkbox-v-2g">Erin</label>
+        <input type="checkbox" name="checkbox-v-2h" id="checkbox-v-2h">
+        <label for="checkbox-v-2h">Martha</label>
+        <input type="checkbox" name="checkbox-v-2i" id="checkbox-v-2i">
+        <label for="checkbox-v-2i">Sam</label>
+        <input type="checkbox" name="checkbox-v-2j" id="checkbox-v-2j">
+        <label for="checkbox-v-2j">Taylor</label>
+        <input type="checkbox" name="checkbox-v-2k" id="checkbox-v-2k">
+        <label for="checkbox-v-2k">Wendy</label>
+      </fieldset>
+    </form>
+  </div> <!-- end main ui-content -->
+
+  <div data-role="footer" data-position="fixed" data-theme="b">
+    <div data-role="navbar">
+      <ul>
+        <li> <a href="#home" data-icon="home"></a>
+        <li> <a href="#menu" data-icon="bars"></a>
+        <li> <a href="#search" data-icon="search"></a>
+        <li> <a href="#friends" data-icon="user"></a>
+        <li> <a href="#settings" data-icon="gear"></a>
+      </ul>
+    </div>
+  </div> <!-- end footer class -->
+
+</div>
+<!-- END INVITES3 PAGE -->
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- CONTACTS PAGE -->
+<div data-role="page" id="contacts" data-theme="a">
+  <div data-role="header" data-position="fixed">
+    <a data-icon="back" data-rel="back" back-btn="true">Back</a>
+    <h1>Contacts</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+    <ul data-role="listview" data-inset="true" data-theme="c">
+      <li data-role="list-divider" data-icon="plus">Groups</li>
+      <li data-icon="star"><a href="#">Major Friends</a></li>
+      <li data-icon="star"><a href="#">Org E-Board</a></li>
+      <li data-icon="star"><a href="#">Dorm Friends</a></li>
+      <li data-role="list-divider" data-icon="plus">Friends</li>
+      <li data-icon="user"><a href="#">Anna</a></li>
+      <li data-icon="user"><a href="#">Emily</a></li>
+      <li data-icon="user"><a href="#">Erin</a></li>
+      <li data-icon="user"><a href="#">Martha</a></li>
+      <li data-icon="user"><a href="#">Sam</a></li>
+      <li data-icon="user"><a href="#">Taylor</a></li>
+      <li data-icon="user"><a href="#">Wendy</a></li>
+    </ul>
+  </div> <!-- end main ui-content -->
+
+  <div data-role="footer" data-position="fixed" data-theme="b">
+    <div data-role="navbar">
+      <ul>
+        <li> <a href="#home" data-icon="home"></a>
+        <li> <a href="#menu" data-icon="bars"></a>
+        <li> <a href="#search" data-icon="search"></a>
+        <li> <a href="#friends" data-icon="user"></a>
+        <li> <a href="#settings" data-icon="gear"></a>
+      </ul>
+    </div>
+  </div> <!-- end footer class -->
+
+</div>
+<!-- END CONTACTS PAGE -->
+
+
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- SETTINGS PAGE -->
+<div data-role="page" id="settings" data-theme="a">
+  <div data-role="header" data-position="fixed">
+    <a data-icon="back" data-rel="back" back-btn="true">Back</a>
+    <h1>Settings</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+    <h4>Food Preferences</h4>
+    <ul data-role="listview" class="ui-listview-inset ui-corner-all">
+    <li><a href="#diet-restrictions">Diet Restrictions</a></li>
+    <li><a href="#priorities">Priorities</a></li>
+    <li><a href="#account-info">Account Information</a></li>
+    <li><a href="#contact-us">Contact Us</a></li>
+    </ul>
+    <ul data-role="listview" class="ui-listview-inset ui-corner-all">
+    <li>My Location
+    <select name="my-location" id="my-location" data-role="slider" data-mini="true">
+      <!--   ijfosjfijeofijaoefjoieqrjf SHOULD BE A SLIDER -->
+    <option value="off">Off</option>
+    <option value="on">On</option>
+    </select></li>
+    <li>Notifications
+    <select name="my-notifications" id="my-notifications" data-role="slider" data-mini="true">
+      <!--   ijfosjfijeofijaoefjoieqrjf SHOULD BE A SLIDER -->
+    <option value="off">Off</option>
+    <option value="on">On</option>
+    </select></li>
+    </ul>
+
+    <p><a href="#" data-role="button">Logout</a></p>
+
+  </div>
+
+    <div data-role="footer" data-position="fixed" data-theme="b">
+      <div data-role="navbar">
+        <ul>
+          <li> <a href="#home" data-icon="home"></a>
+          <li> <a href="#menu" data-icon="bars"></a>
+          <li> <a href="#search" data-icon="search"></a>
+          <li> <a href="#friends" data-icon="user"></a>
+          <li> <a href="#settings" data-icon="gear"></a>
+        </ul>
+      </div>
+    </div>
+  </div> 
+  <!-- END SETTINGS PAGE -->
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <!-- PRIORITIES (UNDER SETTINGS) -->
+    <div data-role="page" id="priorities" data-theme="a">
+      <div data-role="header" data-position="fixed">
+        <a data-icon="back" data-rel="back" back-btn="true">Back</a>
+        <h1>Priorities</h1>
+      </div> <!--header-->
+
+      <div data-role="content" data-theme="c">
+        <ul data-role="listview" data-inset="true" data-theme="d" id="sortable">
+          <li data-role="list-divider">Drag items to reorder in order of preference</li>
+          <li>Location</li>
+          <li>Friends</li>
+          <li>Diet Preferences</li>
+          <li>Special Events</li>
+          <li>Favorite Dining Hall</li>
+        </ul>
+      </div>
+
+      <div data-role="footer" data-position="fixed">
+        <div data-role="navbar">
+          <ul>
+            <li> <a href="#home" data-icon="home"></a>
+            <li> <a href="#menu" data-icon="bars"></a>
+            <li> <a href="#search" data-icon="search"></a>
+            <li> <a href="#friends" data-icon="user"></a>
+            <li> <a href="#settings" data-icon="gear"></a>
+          </ul>
+        </div>
+      </div> <!-- footer-->
+    </div><!--page-->
+
+  <!-- END OF PRIORITIES (UNDER SETTINGS) -->
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <!-- DIET RESTRICTIONS (UNDER SETTINGS) -->
+    <div data-role="page" id="diet-restrictions" data-theme="a">
+      <div data-role="header" data-position="fixed">
+        <a data-icon="back" data-rel="back" back-btn="true">Back</a>
+        <h1>Diet Restrictions</h1>
+        <a href='#diet-restrictions-edit' data-icon="edit">Edit</a>
+      </div>
+
+      <div data-role="main" class="ui-content" id='current-restrictions' data-inset='true'>
+        <ul>
+          <li>Your current diet restrictions will appear here.</li>
+        </ul>
+      </div>
+
+      <div data-role="footer" data-position="fixed">
+        <div data-role="navbar">
+          <ul>
+            <li> <a href="#home" data-icon="home"></a>
+            <li> <a href="#menu" data-icon="bars"></a>
+            <li> <a href="#search" data-icon="search"></a>
+            <li> <a href="#friends" data-icon="user"></a>
+            <li> <a href="#settings" data-icon="gear"></a>
+          </ul>
+        </div>
+      </div><!--footer-->
+  </div> <!--page-->
+  <!-- END OF DIET RESTRICTIONS (UNDER SETTINGS) -->
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <!-- EDITING DIET RESTRICTIONS (UNDER SETTINGS) -->
+    <div data-role="page" id="diet-restrictions-edit" data-theme="a">
+      <div data-role="header" data-position="fixed">
+        <a data-icon="back" data-rel="back" back-btn="true">Back</a>
+        <h1>Edit</h1>
+      </div>
+
+      <div data-role="main" class="ui-content">
+        <div data-role='fieldcontain' id='restriction-list'>
+          <fieldset id='choose-restrictions' data-role="controlgroup" data-theme='c'>
+            <input type="checkbox" name="peanut" id="peanut" class="restriction-list"/>
+            <label for="peanut">Peanuts</label>
+            <input type="checkbox" name="gluten" id="gluten" class="restriction-list"/>
+            <label for="gluten">Gluten</label>
+            <input type="checkbox" name="vegetarian" id="vegetarian" class="restriction-list"/>
+            <label for="vegetarian">Vegetarian</label>
+            <input type="checkbox" name="vegan" id="vegan" class="restriction-list"/>
+            <label for="vegan">Vegan</label>
+            <input type="checkbox" name="dairy" id="dairy" class="restriction-list"/>
+            <label for="dairy">Dairy</label>
+          </fieldset>
+        </div><br> <!--fieldcontain-->
+
+        <div data-role="fieldcontain">
+          <form>
+            <label for="name">Add new dietary restriction:</label>
+            <input type="text" name="name" id="name" value="" id='textBox'/><br>
+            <a href='#diet-popup'class="ui-btn ui-corner-all topbtn" id='saveButton'>Save
+            </a><!-- not sure why value doesn't change -->
+          </form>
+        </div>   <!--fieldcontain-->
+      </div> <!--main-->
+
+      <script>
+      //puts checked items into DIET RESTRICTIONS page. Only works with one item
+        $('#saveButton').click(function(e){
+          e.stopImmediatePropagation();
+          e.preventDefault();
+          $.each($('#choose-restrictions .ui-checkbox :checked'), function(i, el){$('#current-restrictions').html('<li data-inset="true">'+($(el).prev().text())+'</li>')});
+
+           alert('Your preferences have been saved');
+        });
+      </script>
+
+      <div data-role="footer" data-position="fixed">
+        <div data-role="navbar">
+          <ul>
+            <li> <a href="#home" data-icon="home"></a>
+            <li> <a href="#menu" data-icon="bars"></a>
+            <li> <a href="#search" data-icon="search"></a>
+            <li> <a href="#friends" data-icon="user"></a>
+            <li> <a href="#settings" data-icon="gear"></a>
+          </ul>
+        </div>
+      </div>
+    </div> <!--page-->
+  <!-- END OF EDITING DIET RESTRICTIONS (UNDER SETTINGS) -->
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <!-- ACCOUNT INFO (UNDER SETTINGS) -->
+    <div data-role="page" id="account-info" data-theme="a">
+      <div data-role="header" data-position="fixed">
+        <a data-icon="back" data-rel="back" back-btn="true">Back</a>
+        <h1>Account Info</h1>
+        <a href='' data-icon="edit">Edit</a>
+      </div>
+
+      <div data-role="main" class="ui-content" style='margin: 0 auto; text-align:center;'>
+        <br><img src='images/wendy-wellesley.png' style='height:250px' data-inset='true'>
+        <h3>Wendy Wellesley<br><br>
+          wwellesley@wellesley.edu<br><br>
+          (000) 234-5678
+        </h3>
+
+      </div>
+
+    
+
+      <div data-role="footer" data-position="fixed">
+        <div data-role="navbar">
+          <ul>
+            <li> <a href="#home" data-icon="home"></a>
+            <li> <a href="#menu" data-icon="bars"></a>
+            <li> <a href="#search" data-icon="search"></a>
+            <li> <a href="#friends" data-icon="user"></a>
+            <li> <a href="#settings" data-icon="gear"></a>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      
+    </script>
+  <!-- ACCOUNT INFO (UNDER SETTINGS) -->
+
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <!-- CONTACT US (UNDER SETTINGS) -->
+    <div data-role="page" id="contact-us" data-theme="a">
+      <div data-role="header" data-position="fixed">
+        <a data-icon="back" data-rel="back" back-btn="true">Back</a>
+        <h1>Contact Us</h1>
+      </div>
+
+
+      <div data-role="content" data-theme="c" data-inset='true'>
+        <h3>Questions? Contact us here.</h3>
+        <div data-role="fieldcontain">
+          <p style='font-style: italic;'>Note: Name and email from your account will be used to contact you at a later date.</p><br>
+          <label for="comment"><b>Comment:</b></label>
+          <textarea name="comment" id="comment-contactUs" value="" style='height: auto'></textarea><br>
+          <a href='#contactmepopup' data-rel="popup" data-position-to="window" data-transition="fade" 
+          class="ui-btn ui-corner-all ui-shadow topbtn" id='submitButton'>Submit</a>
+        </div>
+      </div><!-- content -->
+
+      <div data-role="popup" id="contactmepopup" class="ui-corner-all">
+          <div data-role="header" class="ui-corner-top">
+            <h1>Thank you!</h1>
+          </div>
+          <div data-role="main" class="ui-corner-bottom ui-content">
+            <p>We will get back to you as soon as possible.</p>
+            <a href="#" data-role="button" data-inline="true" 
+              data-rel="back" data-theme="c">Okay</a>    
+          </div>
+       </div>
+
+      <div data-role="footer" data-position="fixed">
+        <div data-role="navbar">
+          <ul>
+            <li> <a href="#home" data-icon="home"></a>
+            <li> <a href="#menu" data-icon="bars"></a>
+            <li> <a href="#search" data-icon="search"></a>
+            <li> <a href="#friends" data-icon="user"></a>
+            <li> <a href="#settings" data-icon="gear"></a>
+          </ul>
+        </div>
+      </div>
+    </div> <!--page-->
+
+  <!-- END OF CONTACT US (UNDER SETTINGS) -->
+</body>
+
+</html>

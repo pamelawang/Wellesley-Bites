@@ -1,0 +1,48 @@
+/* CSS overrides for WellesleyBites P4
+*/
+
+#home, #friends, #invites, #invites3, #pending, #sent, #confirmed, #contact-us {
+	text-align: center !important;
+}
+
+#contacts {
+	padding-top: 30px !important;
+}
+
+h4 {
+	margin-bottom: 0px !important;
+}
+
+p {
+	margin: 2px 0px;
+	padding: 2 px 0px;
+}
+.invite {
+	padding-top: 0px !important;
+}
+
+.ui-grid-a {
+	list-style: none;
+}
+
+.ui-li .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li {
+    display: block;
+    padding: 0.9em 75px 0.9em 15px;
+}
+div.ui-slider-switch {
+    position: absolute;
+    right: 5px;
+    width: 44%;
+}
+
+.ui-btn-inline {
+	width: 30%;
+}
+
+#invitelist {
+	margin-top: 20px !important;
+}
+
+#lulu, #bates, #pomeroy, #stone-d, #tower, #emporium {
+	background: #ffffff url('images/menubg.jpg') no-repeat left bottom fixed;
+}
