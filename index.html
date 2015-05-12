@@ -1380,7 +1380,8 @@ $(document).on("pagecreate", "#tower", function(){
         $('#saveButton').click(function(e){
           e.stopImmediatePropagation();
           e.preventDefault();
-          $.each($('#choose-restrictions .ui-checkbox :checked'), function(i, el){$('#current-restrictions').html('<li data-inset="true">'+($(el).prev().text())+'</li>')});
+          $('#current-restrictions').empty();
+          $.each($('#choose-restrictions .ui-checkbox :checked'), function(i, el){$('#current-restrictions').append('<li data-inset="true">'+($(el).prev().text())+'</li>')});
 
            alert('Your preferences have been saved');
         });
